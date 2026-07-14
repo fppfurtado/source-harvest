@@ -63,8 +63,9 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
    per-proposal (approve some, reject others, edit any).
 
 6. **File only what was approved.** For each approved proposal, hand off to the backlog `capture` skill
-   (open) or post the amend comment (amend). File nothing else. Never auto-implement a finding (that is a
-   separate, later decision).
+   (open) or post the amend comment (amend); an approved **do-not-file** files nothing by design (it is a
+   decision, not an action). File nothing else. Never auto-implement a finding (that is a separate, later
+   decision).
 
 ## Harvest Report (the artifact of step 5)
 
