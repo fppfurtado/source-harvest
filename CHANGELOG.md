@@ -2,6 +2,8 @@
 
 Keep-a-Changelog-inspired; newest first. This unit versions on its own line (`source-harvest-vX.Y.Z`).
 
+## [Unreleased]
+
 ## [0.1.0] - 2026-07-14
 ### Added
 - Initial release: a portable standalone skill (SKILL.md standard — Claude Code + Cursor) that runs the
