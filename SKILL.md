@@ -33,7 +33,7 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
 ## Protocol
 
 1. **Ingest (per source → structured extract).** For each source, use the fitting existing capability and do
-   NOT build a parallel one: a video link → a video→context adapter (e.g. the youtube-context MCP); a URL →
+   NOT build a parallel one: a video link → a video→context adapter (e.g. the media-context MCP); a URL →
    a web-fetch tool; a local PDF / text / markdown → read it; inline text → use it directly. Where a source
    type has no adapter, degrade to pasted text (the core is source-agnostic). Produce a structured extract
    per source: claims / techniques / stances / notable specifics — with a one-line provenance (what it is,

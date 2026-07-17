@@ -4,6 +4,12 @@ Keep-a-Changelog-inspired; newest first. This unit versions on its own line (`so
 
 ## [Unreleased]
 
+### Changed
+- **Ingest example refreshed: `youtube-context` → `media-context`.** The video→context adapter example in
+  the Ingest step now names the `media-context` MCP — the live successor after `youtube-context` was retired
+  (its YouTube adapter was absorbed by media-context). Illustrative only; no change to the source-agnostic
+  ingest behavior. (agent-kit #283, ripple of #236)
+
 ## [0.1.0] - 2026-07-14
 ### Added
 - Initial release: a portable standalone skill (SKILL.md standard — Claude Code + Cursor) that runs the
