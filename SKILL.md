@@ -53,7 +53,7 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
    - **gap** — a real thing the repo does not address and that its doctrine does not cut.
    This is judgment (there is no completeness oracle); be honest about uncertainty rather than forcing a bucket.
 
-4. **Propose (tiered, ranked).** Only **gap** insights are candidates. For each, propose one action —
+4. **Propose (tiered, ranked).** Only **gap** insights are candidates. For each, propose one disposition —
    **open** (a new tracker item), **amend** (extend an existing item — name it), or **do-not-file** (real but
    not worth tracking — say why) — ranked by strategic impact for this repo. `already-maps` and
    `doctrine-cuts` insights are reported as evidence, never proposed as work.
@@ -92,6 +92,10 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
 | <insight> | already-maps / doctrine-cuts / gap | <AGENTS.md §, guideline, issue #, tree path> |
 
 ## Proposal (gaps only — ranked)  ⟶ AWAITING APPROVAL
+<!-- Rank ALL proposals by strategic impact for this repo, do-not-file included: a do-not-file is a
+     decision (not an action), ranked where its impact belongs — a high-impact real-but-not-tracked
+     insight still rises, it simply files nothing on approval. -->
+
 1. <insight> — **open** — <title + why it matters to this repo>
 2. <insight> — **amend #N** — <what to add>
 3. <insight> — **do-not-file** — <why real-but-not-tracked>

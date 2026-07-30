@@ -4,6 +4,12 @@ Keep-a-Changelog-inspired; newest first. This unit versions on its own line (`so
 
 ## [Unreleased]
 
+### Fixed
+- **Do-not-file ranking rule made explicit** (doctrine-review agent-kit #533, Stage 4). The ranked Proposal
+  section now states that `do-not-file` items are ranked by strategic impact alongside `open`/`amend` (a
+  do-not-file is a decision, not an action — it files nothing on approval but still takes its place in the
+  ranking). Clarifies an under-specified ordering; no behavior contract change.
+
 ### Changed
 - **Ingest example refreshed: `youtube-context` → `media-context`.** The video→context adapter example in
   the Ingest step now names the `media-context` MCP — the live successor after `youtube-context` was retired
