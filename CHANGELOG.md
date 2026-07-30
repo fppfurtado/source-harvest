@@ -4,6 +4,8 @@ Keep-a-Changelog-inspired; newest first. This unit versions on its own line (`so
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-07-29
+
 ### Fixed
 - **Do-not-file ranking rule made explicit** (doctrine-review agent-kit #533, Stage 4). The ranked Proposal
   section now states that `do-not-file` items are ranked by strategic impact alongside `open`/`amend` (a
