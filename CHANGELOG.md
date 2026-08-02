@@ -4,6 +4,16 @@ Keep-a-Changelog-inspired; newest first. This unit versions on its own line (`so
 
 ## [Unreleased]
 
+### Fixed
+- **Confrontation reads frozen product/design contracts + an evidence-citation gate** (agent-kit #580,
+  cross-repo-origin from a live mneme harvest). Step 3's binding-context reading list now names a repo's
+  **frozen Vision/Brief/Spec** — where the load-bearing doctrine may live rather than in `CLAUDE.md`, so
+  confronting only the `CLAUDE.md` surface read a partial anchor and misclassified (two live insights were
+  mis-bucketed against ground-truth that lived in the frozen Vision). Adds an **evidence gate**: each
+  bucket's justification must cite a real anchor (file/section, guideline, Vision/Brief/Spec clause, issue #,
+  tree path), never a bare or invented claim — closing the fabricated-evidence hole both misclassifications
+  rode. Stays bounded-to-the-insight (not a mandate to read all of `solution/` every harvest).
+
 ## [0.1.1] - 2026-07-29
 
 ### Fixed
