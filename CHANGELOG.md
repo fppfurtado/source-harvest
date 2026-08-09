@@ -4,6 +4,8 @@ Keep-a-Changelog-inspired; newest first. This unit versions on its own line (`so
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-08-09
+
 ### Added
 - **Claim-validation step (step 4): validate the leverageable points against current evidence before
   proposing adoption** (agent-kit #696). After Confront raises the `gap` candidates, the skill now CONFIRMS
@@ -16,8 +18,9 @@ Keep-a-Changelog-inspired; newest first. This unit versions on its own line (`so
   confirmed them). Outcome routes into the proposal: a **refuted** point is routed to `do-not-file` with the
   refutation cited (never `open`/`amend`); a **confirmed** point carries its evidence; an
   **inconclusive / not-externally-validatable / no-tool** point carries an explicit `unverified` flag so the
-  operator adopts with eyes open. **Portability-clean:** where no research tool exists it degrades to the
-  existing `unverified — confirm` flag rather than failing. Adds a Validation section to the Harvest Report.
+  operator adopts with eyes open. **Portability-clean:** where no research tool exists it resolves the point
+  to a distinct `unverified (no tool)` verdict rather than failing. Adds a Validation section to the Harvest
+  Report.
 
 ### Fixed
 - **Confrontation reads frozen product/design contracts + an evidence-citation gate** (agent-kit #580,

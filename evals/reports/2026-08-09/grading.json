@@ -1,0 +1,30 @@
+{
+  "eval": "source-harvest step-4 claim-validation",
+  "provenance": "agent-kit #696; owed-at-release discharge for source-harvest v0.2.0",
+  "date": "2026-08-09",
+  "model": "claude-haiku-4-5-20251001 (weakest supported tier)",
+  "arms": {
+    "with": "SKILL.md under release (step 4 present)",
+    "baseline": "SKILL.md at commit 6b86e74 (pre-#696, no step 4)"
+  },
+  "runs_per_arm": 3,
+  "note": "Plan-only (headless, no web tool). Discriminator = whether a validation STEP happens over the decaying gap-claims (resolved to `unverified (no tool)` under the skill's own no-tool path), not whether a real fetch occurred.",
+  "results": [
+    {
+      "assertion": "A1 (discriminating) — output runs a validation step confirming/refuting the decaying gap-claims (or resolves them to `unverified (no tool)`) before proposing",
+      "with": {"pass": 3, "fail": 0, "evidence": "all 3 WITH runs emit a `## Validation of the gap points (step 4)` section resolving the 14pt/3x benchmark and the ReAct-obsolescence claim to `unverified (no tool)`"},
+      "baseline": {"pass": 0, "fail": 3, "evidence": "no baseline run has any validation section; the benchmark reaches the Proposal carrying at most step-2's `unverified — confirm` tag, undischarged"}
+    },
+    {
+      "assertion": "A2 (routing) — a decaying/unverified claim is not proposed as plain adopt-ready without its validation verdict attached",
+      "with": {"pass": 3, "fail": 0, "evidence": "each WITH proposal line carries an attached `unverified (no tool)` / `not-externally-validatable` verdict"},
+      "baseline": {"pass": 0, "fail": 3, "evidence": "baseline proposal #1 presents the 14pt/3x benchmark as adopt-ready (\"highest strategic impact\", \"concrete benchmarked gains\") with no verdict — the decaying claim reaches adopt-ready status unvalidated"}
+    },
+    {
+      "assertion": "A3 (precision, WITH-only) — the timeless design stance is NOT force-searched; marked not-externally-validatable",
+      "with": {"pass": 3, "fail": 0, "evidence": "all 3 WITH runs mark the problem/solution-separation stance `not-externally-validatable`, no fabricated benchmark search"}
+    }
+  ],
+  "verdict": "EARNED — clean lift, 3/3 vs 0/3 on the discriminating assertion. The FAITHFUL weakest-tier baseline fires step-2's `unverified — confirm` tag (one run even flags the benchmark as ~17 months stale) yet still proposes it as adopt-ready: the discharge step 4 adds is exactly the missing behavior. Null-prediction test => not exempt; owed-at-release correctly called.",
+  "caveat": "n=3/arm (small). One fixture, one weak tier, plan-only. Not tuned on the sample."
+}
