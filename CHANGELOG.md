@@ -4,6 +4,21 @@ Keep-a-Changelog-inspired; newest first. This unit versions on its own line (`so
 
 ## [Unreleased]
 
+### Added
+- **Claim-validation step (step 4): validate the leverageable points against current evidence before
+  proposing adoption** (agent-kit #696). After Confront raises the `gap` candidates, the skill now CONFIRMS
+  or REFUTES each point whose adopt-decision rests on a decaying/empirical claim (a version, benchmark,
+  "current best practice", cited result) against the most-recent web/academic/authoritative evidence —
+  following the `deep-research` fan-out-then-adversarially-verify PATTERN with whatever web-search/fetch tool
+  is available (a pattern applied, not a callable dependency), scoped to a *closed* claim-check (never an
+  open research question, preserving the bounded-context line vs `deep-research`). This **discharges the
+  previously-dangling `unverified — confirm` loop** (step 2 tagged decaying claims but no step ever
+  confirmed them). Outcome routes into the proposal: a **refuted** point is routed to `do-not-file` with the
+  refutation cited (never `open`/`amend`); a **confirmed** point carries its evidence; an
+  **inconclusive / not-externally-validatable / no-tool** point carries an explicit `unverified` flag so the
+  operator adopts with eyes open. **Portability-clean:** where no research tool exists it degrades to the
+  existing `unverified — confirm` flag rather than failing. Adds a Validation section to the Harvest Report.
+
 ### Fixed
 - **Confrontation reads frozen product/design contracts + an evidence-citation gate** (agent-kit #580,
   cross-repo-origin from a live mneme harvest). Step 3's binding-context reading list now names a repo's

@@ -2,8 +2,9 @@
 name: source-harvest
 description: >-
   Harvest 1..N external sources (video / URL / PDF / pasted text) into structured extracts, synthesize
-  across them, confront the result against THIS repo's doctrine + tree + open issues, and emit a ranked,
-  operator-gated adopt-proposal — filing nothing without approval. Use when you have outside signal (a talk,
+  across them, confront the result against THIS repo's doctrine + tree + open issues, validate the
+  leverageable points against current web/academic evidence, and emit a ranked, operator-gated
+  adopt-proposal — filing nothing without approval. Use when you have outside signal (a talk,
   article, doc, thread) you want tested against this project and turned into tracked follow-ups. It is NOT
   deep-research (which answers an open research QUESTION from the web) and NOT a knowledge-vault / source
   digester (which accumulates pages) — this one confronts a specific repo and proposes what to adopt, then
@@ -13,10 +14,11 @@ description: >-
 # source-harvest — external sources → confront THIS repo → gated adopt-proposal
 
 Turn outside signal into tracked, repo-aware follow-ups. This skill runs a proven session ritual —
-ingest → synthesize → **confront this repo** → **propose, gated** → file-on-approval — as one reproducible
-pass. It is a **thin skill that COMPOSES existing capabilities** (ingest adapters, the `deep-research`
-pattern, the backlog `capture` hand-off); its own earned substance is the **confrontation with this repo and
-the gated adopt decision**, which no other tool performs. It **never files anything without operator approval**.
+ingest → synthesize → **confront this repo** → **validate the leverageable points** → **propose, gated** →
+file-on-approval — as one reproducible pass. It is a **thin skill that COMPOSES existing capabilities**
+(ingest adapters, the `deep-research` pattern, the backlog `capture` hand-off); its own earned substance is
+the **confrontation with this repo, the validation of its adopt-candidates against current evidence, and the
+gated adopt decision**, which no other tool performs. It **never files anything without operator approval**.
 
 **Input.** The sources: URLs, file paths (PDF / text / markdown), a video link, or text supplied inline.
 One or many, mixed — passed when the skill is invoked. If no source is given, ask which sources to harvest
@@ -24,7 +26,11 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
 
 ## What this is NOT (route elsewhere)
 - A web research engine → that is `deep-research` (fan-out search to answer an open QUESTION). This skill
-  starts from sources you already have and points them AT this repo.
+  starts from sources you already have and points them AT this repo. It DOES run a bounded
+  **claim-validation** over its own adopt-candidates (step 4, following `deep-research`'s
+  fan-out-then-adversarially-verify pattern), but that CONFIRMS or REFUTES a specific point it already
+  holds — it never opens an unbounded research question. Validating a named claim is a closed check;
+  researching a question is not.
 - A knowledge vault / compounding wiki → that is the accumulation path (a source-digester / a PKM island).
   Harvest outputs are **proposals and tracked items, not pages filed back into this repo**.
 - A replacement for problem-framing → if a harvest surfaces a problem-shaped effort, **hand off to `frame`**;
@@ -62,21 +68,51 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
    unanchored insight is not a confident classification). (Both live-observed misclassifications rode invented
    "evidence" that cited no anchor.)
 
-4. **Propose (tiered, ranked).** Only **gap** insights are candidates. For each, propose one disposition —
-   **open** (a new tracker item), **amend** (extend an existing item — name it), or **do-not-file** (real but
-   not worth tracking — say why) — ranked by strategic impact for this repo. `already-maps` and
-   `doctrine-cuts` insights are reported as evidence, never proposed as work.
+4. **Validate the leverageable points against current evidence (discharge the `unverified — confirm` loop).**
+   Take the **gap** insights from step 3 — the only adopt-candidates — and, for each whose adopt-decision
+   rests on a claim that **decays or is empirical** (a version, a benchmark, a "current best practice", a
+   cited result), CONFIRM or REFUTE the claim against the most-recent external evidence, favouring
+   authoritative / academic / primary sources. **Follow the `deep-research` PATTERN — fan out a search, then
+   ADVERSARIALLY verify (actively seek the disconfirming result, don't just collect corroboration)** — using
+   whatever web-search / fetch capability is available (the same class of tool step 1 uses to ingest a URL;
+   it is a pattern to apply, not a callable dependency). Do NOT open a research QUESTION: this is a *closed*
+   check of a specific asserted point, not open-ended research (the bounded-context line the skill is defined
+   by). This is where any `unverified — confirm` tag from step 2 is DISCHARGED — a load-bearing decaying
+   claim may not reach the proposal still merely tagged (the one exception is the no-tool degradation in the
+   portability gate below, which resolves the tag to an explicit `unverified (no tool)` verdict). Record one
+   verdict per validated point, each with provenance (source + date):
+   - **confirmed** — current evidence corroborates it; it proceeds to step 5 carrying that evidence;
+   - **refuted** — current evidence supersedes or contradicts it; it is **no longer adopt-ready** — report it
+     with the refutation cited and route it to `do-not-file` in step 5 (a superseded claim is a decision, not
+     work);
+   - **inconclusive / not-externally-validatable** — the evidence is genuinely mixed, OR the point is a
+     non-empirical design stance no search settles; it MAY still be proposed, but carries an explicit
+     `unverified` flag so the operator adopts with eyes open (never silently presented as settled).
+   **VOI + portability gate.** Validate only a point whose truth would change the adopt-decision (a timeless
+   design principle needs no benchmark — mark it not-externally-validatable rather than forcing a search).
+   Where **no web/research tool is available**, do not fail: resolve the point's step-2 `unverified — confirm`
+   tag to the verdict **`unverified (no tool)`** — a distinct "validation attempted, no tool" state, NOT the
+   unresolved step-2 tag — and carry that into the proposal. It is the graceful-degradation floor of this
+   step, never a skipped obligation.
 
-5. **HALT — surface the Harvest Report and STOP for approval.** Emit the report (below) and wait. Do not
+5. **Propose (tiered, ranked).** Only **gap** insights are candidates, and only as their step-4 validation
+   allows. For each, propose one disposition — **open** (a new tracker item), **amend** (extend an existing
+   item — name it), or **do-not-file** (real but not worth tracking — say why) — ranked by strategic impact
+   for this repo. A **refuted** point is routed to `do-not-file` with its refutation cited (never
+   `open`/`amend`); a **confirmed** or `unverified`-flagged point may take any disposition, carrying its
+   step-4 verdict + evidence. `already-maps` and `doctrine-cuts` insights are reported as evidence, never
+   proposed as work.
+
+6. **HALT — surface the Harvest Report and STOP for approval.** Emit the report (below) and wait. Do not
    file, open, amend, or edit any tracker item before the operator approves specific proposals. Approval is
    per-proposal (approve some, reject others, edit any).
 
-6. **File only what was approved.** For each approved proposal, hand off to the backlog `capture` skill
+7. **File only what was approved.** For each approved proposal, hand off to the backlog `capture` skill
    (open) or post the amend comment (amend); an approved **do-not-file** files nothing by design (it is a
    decision, not an action). File nothing else. Never auto-implement a finding (that is a separate, later
    decision).
 
-## Harvest Report (the artifact of step 5)
+## Harvest Report (the artifact of step 6)
 
 ```
 # Harvest Report — <date>
@@ -100,19 +136,30 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
 |---------|--------|----------------------|
 | <insight> | already-maps / doctrine-cuts / gap | <AGENTS.md §, guideline, Vision/Brief/Spec §, issue #, tree path — a real anchor, never a bare claim> |
 
+## Validation of the gap points (step 4 — confirm/refute vs current evidence)
+<!-- Gaps only (the adopt-candidates). A point that decays or is empirical is confirmed/refuted; a timeless
+     design stance is 'not-externally-validatable'; where no research tool exists, 'unverified (no tool)'. -->
+| Gap point | Verdict | Evidence (source + date) |
+|-----------|---------|--------------------------|
+| <point> | confirmed / refuted / inconclusive / not-externally-validatable / unverified (no tool) | <source, date — or "no research tool available"> |
+
 ## Proposal (gaps only — ranked)  ⟶ AWAITING APPROVAL
 <!-- Rank ALL proposals by strategic impact for this repo, do-not-file included: a do-not-file is a
      decision (not an action), ranked where its impact belongs — a high-impact real-but-not-tracked
-     insight still rises, it simply files nothing on approval. -->
+     insight still rises, it simply files nothing on approval. A step-4 REFUTED point is routed to
+     do-not-file with its refutation cited; a confirmed/unverified-flagged point carries its verdict. -->
 
-1. <insight> — **open** — <title + why it matters to this repo>
-2. <insight> — **amend #N** — <what to add>
-3. <insight> — **do-not-file** — <why real-but-not-tracked>
+1. <insight> — **open** — <title + why it matters to this repo> — <step-4 verdict + evidence>
+2. <insight> — **amend #N** — <what to add> — <step-4 verdict + evidence>
+3. <insight> — **do-not-file** — <why real-but-not-tracked, or "refuted by <source, date>">
 ```
 
 ## Discipline
-- **Compose, don't reinvent** — ingest and synthesis reuse existing capabilities; this skill's own work is
-  steps 3–6.
+- **Compose, don't reinvent** — ingest and synthesis reuse existing capabilities, and step-4 validation
+  reuses the same web-search / fetch tool as ingest under the `deep-research`
+  fan-out-then-adversarially-verify PATTERN (scoped to a closed claim-check — a pattern applied, not a
+  callable dependency); this skill's own earned work is the confront → validate → gated-propose spine
+  (steps 3–7).
 - **The gate is absolute** — no tracker mutation before approval (the draft-never-freeze / never-merge spirit
   applied to filing). Rubber-stamping the report into files without a real approval defeats the skill.
 - **Confrontation is judgment** — the report attests the pass ran and what it found; it never claims to have
