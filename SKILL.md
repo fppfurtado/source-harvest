@@ -77,10 +77,12 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
    whatever web-search / fetch capability is available (the same class of tool step 1 uses to ingest a URL;
    it is a pattern to apply, not a callable dependency). Do NOT open a research QUESTION: this is a *closed*
    check of a specific asserted point, not open-ended research (the bounded-context line the skill is defined
-   by). This is where any `unverified — confirm` tag from step 2 is DISCHARGED — a load-bearing decaying
-   claim may not reach the proposal still merely tagged (the one exception is the no-tool degradation in the
-   portability gate below, which resolves the tag to an explicit `unverified (no tool)` verdict). Record one
-   verdict per validated point, each with provenance (source + date):
+   by). This is where a **gap's** `unverified — confirm` tag from step 2 is DISCHARGED — a load-bearing
+   decaying claim on an adopt-candidate may not reach the proposal still merely tagged (a tag on a *non-gap*
+   insight — `already-maps`/`doctrine-cuts` — needs no discharge, as it never reaches the proposal; the one
+   exception for gaps is the no-tool degradation in the portability gate below, which resolves the tag to an
+   explicit `unverified (no tool)` verdict). Record one verdict per validated point, each with provenance
+   (source + date):
    - **confirmed** — current evidence corroborates it; it proceeds to step 5 carrying that evidence;
    - **refuted** — current evidence supersedes or contradicts it; it is **no longer adopt-ready** — report it
      with the refutation cited and route it to `do-not-file` in step 5 (a superseded claim is a decision, not
@@ -99,8 +101,9 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
    allows. For each, propose one disposition — **open** (a new tracker item), **amend** (extend an existing
    item — name it), or **do-not-file** (real but not worth tracking — say why) — ranked by strategic impact
    for this repo. A **refuted** point is routed to `do-not-file` with its refutation cited (never
-   `open`/`amend`); a **confirmed** or `unverified`-flagged point may take any disposition, carrying its
-   step-4 verdict + evidence. `already-maps` and `doctrine-cuts` insights are reported as evidence, never
+   `open`/`amend`); a **confirmed**, `unverified`-flagged, or `unverified (no tool)` point may take any
+   disposition, carrying its step-4 verdict + evidence. `already-maps` and `doctrine-cuts` insights are
+   reported as evidence, never
    proposed as work.
 
 6. **HALT — surface the Harvest Report and STOP for approval.** Emit the report (below) and wait. Do not
