@@ -11,6 +11,18 @@
 # Usage:  ./run.sh <out-dir>            (defaults: MODEL=claude-haiku-4-5-20251001, RUNS=3, BASE_REF=6b86e74)
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
+
+# --- HOME isolation via the shared helper (agent-kit #647/#700) ---------------------------------------
+# `claude -p` loads the operator's global ~/.claude/CLAUDE.md, whose doctrine would otherwise leak into
+# BOTH arms (agent-kit #414/#643). Source the SAME single-sourced helper the root evals/ runners use — it
+# builds a fresh auth-only temp HOME, unsets CLAUDE_CONFIG_DIR, and PRE-FLIGHT-asserts the isolation is in
+# effect (a bare `HOME=` redirect can't verify those, #647). This eval pack lives permanently in-repo
+# (the adapters symlink SKILL.md ONLY — the evals/ dir never ships, and standalone skills/ are never
+# subtree-extracted), so the ../../../evals/lib path is stable; sourcing it is valid, not fragile. The
+# helper leaves $ISO_HOME for the CALLER to clean.
+source "$HERE/../../../evals/lib/isolate-home.sh"
+trap 'rm -rf "$ISO_HOME"' EXIT
+
 OUT="${1:?usage: run.sh <out-dir>}"
 MODEL="${MODEL:-claude-haiku-4-5-20251001}"
 RUNS="${RUNS:-3}"
