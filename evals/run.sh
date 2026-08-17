@@ -60,7 +60,7 @@ run_arm() { # $1 = arm label  $2 = skill text
   local prompt; prompt="$(build_prompt "$skill")"
   for n in $(seq 1 "$RUNS"); do
     echo "  [$label] run $n/$RUNS ..."
-    timeout 300 claude -p --model "$MODEL" "$prompt" > "$OUT/$label/run-$n.md" 2>&1 || echo "(run $n exited non-zero)"
+    ( cd "$NEUTRAL_CWD" && timeout 300 claude -p --model "$MODEL" "$prompt" ) > "$OUT/$label/run-$n.md" 2>&1 || echo "(run $n exited non-zero)"
   done
 }
 
