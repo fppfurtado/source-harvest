@@ -1,0 +1,32 @@
+{
+  "eval": "source-harvest #989 depth gaps — D1 confront-vs-live-signal + D2 code-level tool-ingest",
+  "provenance": "agent-kit #989; owed-at-release discharge for source-harvest v0.3.0",
+  "date": "2026-08-23",
+  "model": "claude-haiku-4-5-20251001 (weakest supported tier)",
+  "arms": {
+    "with": "SKILL.md under release (D1/D2 prose + structural report-template anchors present)",
+    "baseline": "SKILL.md at commit 8da29c2 (pre-#989, no D1/D2, no anchors)"
+  },
+  "runs_per_arm": 3,
+  "fixture": "fixtures/v2-* — S1=memcap (a software-tool source, README-only); target recall-kit, whose Brief names an OPEN unsolved failure (#37, 'never-miss capture') that memcap's auto-capture would fix (doctrine-only pull => gap/adopt), and which exposes a live metrics probe (`recall-kit eval proposals`) named-but-not-pasted.",
+  "note": "Plan-only (headless, no web/clone tool). The live-signal OUTPUT is NOT pasted (SEEK design): the discriminator is whether the arm CONFRONTS/SEEKS the live signal and gates the classification on it (no-tool => `signal named but no tool to run it`, classification provisional), and whether it flags a tool-source's README as a SECONDARY anchor with the code un-ingested — not whether a real probe/clone ran. Mirrors v1's 'the step happens' discriminator.",
+  "methodology_finding": "A prior de-confounded run of the PROSE-ONLY #989 edits (no structural report-template anchor) NULLED: WITH == BASELINE (3/3 both bucketed `gap` and proposed adopting auto-capture; neither surfaced D1 or D2). Prose guidance alone does not survive weak tier. The lift below appears ONLY after adding two STRUCTURAL anchors to the Harvest Report template (a `Live-signal check:` line + a per-source `ingest level:` tag) — mirroring why v0.2.0's step-4 earned (it too was a structural report section the weak model fills in). The earlier apparent lift in a confounded fixture was pure fixture-cueing.",
+  "results": [
+    {
+      "assertion": "A1 (D1, discriminating) — the output CONFRONTS the auto-capture insight against the LIVE operational signal (emits a `Live-signal check` naming `recall-kit eval proposals`, resolved to `signal named but no tool to run it`), rather than classifying gap->adopt from doctrine while silent on the running state. Strong form additionally marks the classification PROVISIONAL.",
+      "with": {"pass": 3, "fail": 0, "evidence": "all 3 WITH runs emit a `Live-signal check:` line naming `recall-kit eval proposals` and resolve it to no-tool — the discriminating confront fires 3/3. Strong-form provisional gating: 2/3 (run-1 'classification remains provisional — running system may have already solved BR-07, or may currently be starving'; run-2 'classification stays provisional'). run-3 fires the confront but makes a VOI call that the signal is non-decisive ('not contingent on live queue state') and keeps a confident gap — a debatable VOI judgment on THIS fixture (designed so the live signal WOULD move the bucket), but the D1 confront behaviour still surfaced."},
+      "baseline": {"pass": 0, "fail": 3, "evidence": "no baseline run emits a live-signal check or mentions the probe at all — each classifies `gap` and proposes `amend #37` purely from the Brief + #37 doctrine, silent on the running state (the pre-#989 skill never tells it to consult live signal)"}
+    },
+    {
+      "assertion": "A2 (D2, discriminating) — the output treats S1 (memcap) as a software-tool/codebase source whose README is a SECONDARY anchor, flagging the deciding code as un-ingested (a code-level read is owed), rather than ingesting the README claim as memcap's actual behaviour",
+      "with": {"pass": 3, "fail": 0, "evidence": "all 3 WITH runs carry an `ingest level` tag flagging README as secondary and the code as un-ingested (run-1: 'partial — README description only; actual code behavior un-examined'; run-2: 'prose... code un-ingested — README secondary'; run-3: 'text/description only... code-level ingestion not performed', and its proposal recommends 'code-level review of memcap's actual source (not just README) before adoption')"},
+      "baseline": {"pass": 0, "fail": 3, "evidence": "no baseline run tags an ingest level or flags the code as un-ingested; each extracts memcap's README claims as its 'Claim'/'Stance' at face value (run-3: 'Install-and-go automation') and proposes adopt on that basis"}
+    },
+    {
+      "assertion": "A3 (precision, WITH-only) — the WITH output does NOT fabricate a live probe it wasn't given or hallucinate memcap's code; it uses the no-tool state honestly and keeps the live-signal VOI-gated",
+      "with": {"pass": 3, "fail": 0, "evidence": "all 3 WITH runs resolve the un-runnable probe to `no tool to run it` (no invented metrics) and keep it VOI-gated (run-1/2 mark provisional; run-3 makes an explicit VOI call) — no fabricated code or metrics anywhere"}
+    }
+  ],
+  "verdict": "EARNED (with structural anchors) — clean lift on both discriminating assertions: A1 (the D1 confront-against-live-signal fires) 3/3 vs 0/3, A2 (D2 tool-source ingest-level / README-secondary) 3/3 vs 0/3. The load-bearing methodological lesson: the D1/D2 PROSE alone NULLED at weak tier; the behaviour earns only once anchored to a structural report-template slot the weak model fills in (the same mechanism that earned v0.2.0's step 4). Precision caveat within A1: 2/3 WITH runs mark the classification provisional; run-3 fires the confront but makes a VOI call that the signal is non-decisive (a debatable judgment on a fixture designed so it WOULD move the bucket) — a judgment-quality nuance, not an absence of the D1 behaviour, which surfaced 3/3 vs a baseline that is silent on the running state 0/3.",
+  "caveat": "n=3/arm (small). One fixture, one weak tier, plan-only, live-signal SEEK-form (probe named, output not pasted). Not tuned on the sample. Outputs re-run against the SHIPPED (economy-trimmed) SKILL.md after the /audit progressive-disclosure trim, so the archive matches what ships. The v0.2.0 (v1) pack remains archived under reports/2026-08-09/."
+}

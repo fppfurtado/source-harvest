@@ -51,7 +51,9 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
    modules / crates / docs), NOT a web-fetch of its README.** For a software-tool source the README is a
    SECONDARY anchor — a tool's self-description is its aspiration, its code is its actual commitment, so the
    deciding evidence lives in the code (mirrors step 3's `CLAUDE.md may be a partial/secondary anchor`
-   caution, applied here to the SOURCE side of the ingest). Where a source
+   caution, applied here to the SOURCE side of the ingest). **Record each source's ingest level in the
+   report's Per-source extracts — a tool read only at README level is flagged as partially ingested, not
+   treated as fully known.** Where a source
    type has no adapter, degrade to pasted text (the core is source-agnostic). Produce a structured extract
    per source: claims / techniques / stances / notable specifics — with a one-line provenance (what it is,
    where from).
@@ -87,10 +89,12 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
    like step-4 validation (probe only a signal that would move the classification; skip where none exists or
    none is relevant). The doctrine may describe an aspiration, or a historical failure the running system
    has already moved PAST: classify against the system as it RUNS, not only as it is documented. A
-   live-probe result is itself a real evidence anchor for the bucket it decides. (Live-observed: a frozen
-   Brief's failure mode confronted as an adopt-worthy `gap`; a one-line probe of the running instance showed
-   that failure is already INVERTED today → the verdict flipped adopt→reject. A doctrine-only confront would
-   have shipped the wrong proposal.)
+   live-probe result is itself a real evidence anchor for the bucket it decides. **Record the outcome in the
+   report's `Live-signal check` line — including the `signal named but no tool to run it` state, which keeps
+   the classification provisional rather than silently doctrine-only.** (Live-observed: a frozen Brief's
+   failure mode confronted as an adopt-worthy `gap`; a one-line probe of the running instance showed that
+   failure is already INVERTED today → the verdict flipped adopt→reject. A doctrine-only confront would have
+   shipped the wrong proposal.)
 
 4. **Validate the leverageable points against current evidence (discharge the `unverified — confirm` loop).**
    Take the **gap** insights from step 3 — the only adopt-candidates — and, for each whose adopt-decision
@@ -149,7 +153,9 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
 - S2: …
 
 ## Per-source extracts
-- S1: <claims / techniques / stances / specifics>
+- S1: <claims / techniques / stances / specifics> — **ingest level:** <prose | code-level; flag a
+  README-only read of a software-tool / codebase source as partial — README secondary, code un-ingested
+  (see step 1)>
 - …
 
 ## Synthesis
@@ -162,6 +168,10 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
 | Insight | Bucket | Evidence (repo cite) |
 |---------|--------|----------------------|
 | <insight> | already-maps / doctrine-cuts / gap | <AGENTS.md §, guideline, Vision/Brief/Spec §, issue #, tree path, live-probe result — a real anchor, never a bare claim> |
+
+**Live-signal check:** <the probe consulted + what it showed + which bucket it gated; or `no relevant live
+signal`; or `signal named but no tool to run it` (name it — classification stays provisional). VOI-gated —
+see step 3.>
 
 ## Validation of the gap points (step 4 — confirm/refute vs current evidence)
 <!-- Gaps only (the adopt-candidates). A point that decays or is empirical is confirmed/refuted; a timeless

@@ -1,6 +1,6 @@
 {
   "name": "source-harvest",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Harvest external sources (video/URL/PDF/text/code) → structured extracts → cross-synthesis → confront THIS repo's doctrine+tree+issues → validate the leverageable points vs current web/academic evidence → ranked, operator-gated adopt-proposal. Files nothing without approval. Not deep-research (answers an open research question) and not a knowledge-vault (accumulates pages) — it confronts a specific repo and proposes what to adopt, then stops.",
   "author": { "name": "Fernando Furtado", "email": "fppfurtado@outlook.com" },
   "keywords": ["source-harvest", "research-intake", "repo-confrontation", "gated-proposal", "meta"]

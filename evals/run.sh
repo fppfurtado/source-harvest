@@ -1,14 +1,21 @@
 #!/usr/bin/env bash
-# Lean, self-contained blind weak-tier ablation for source-harvest's step-4 claim-validation.
-# Not the throughline suite harness — a standalone skill's first eval pack (agent-kit #696).
+# Lean, self-contained blind weak-tier ablation for source-harvest behaviours.
+# Not the throughline suite harness — a standalone skill's eval pack (agent-kit #696 step 4; #989 D1/D2).
 #
-# WITH arm      = the SKILL.md in this working tree (step 4 present).
-# BASELINE arm  = the SKILL.md at the pre-#696 commit (no step 4), fetched from git.
+# WITH arm      = the SKILL.md in this working tree (behaviour-under-test present).
+# BASELINE arm  = the SKILL.md at the pre-behaviour commit ($BASE_REF), fetched from git.
 # Both arms get ONLY the skill + fixture + "produce the Harvest Report"; grading is separate + blind.
-# Plan-only: headless has no web tool, so the discriminator is whether a VALIDATION STEP happens over the
-# decaying gap-claims (skill's own no-tool path resolves them to `unverified (no tool)`), not a real fetch.
+# Plan-only: headless has no web/clone tool, so the discriminator is whether the behaviour's STEP HAPPENS
+# (a validation over decaying claims / a confront against the provided live signal / a code-level-read
+# flag on a tool source), not whether a real fetch or clone occurred.
 #
-# Usage:  ./run.sh <out-dir>            (defaults: MODEL=claude-haiku-4-5-20251001, RUNS=3, BASE_REF=6b86e74)
+# Fixture sets ($FIXTURE, default v1):
+#   v1  — step-4 claim-validation (agent-kit #696);           baseline BASE_REF=6b86e74 (pre-#696)
+#   v2  — D1 confront-vs-live-signal + D2 code-level ingest (#989); baseline BASE_REF=8da29c2 (pre-#989)
+#
+# Usage:  ./run.sh <out-dir>            (defaults: MODEL=claude-haiku-4-5-20251001, RUNS=3, FIXTURE=v1,
+#                                        BASE_REF=6b86e74)
+#   e.g.  FIXTURE=v2 BASE_REF=8da29c2 ./run.sh reports/2026-08-23-v0.3.0-989-depth-gaps
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 
@@ -28,10 +35,11 @@ MODEL="${MODEL:-claude-haiku-4-5-20251001}"
 RUNS="${RUNS:-3}"
 BASE_REF="${BASE_REF:-6b86e74}"
 
+FIXTURE="${FIXTURE:-v1}"
 WITH_SKILL="$(cat "$HERE/../SKILL.md")"
 BASE_SKILL="$(git -C "$HERE" show "$BASE_REF:skills/source-harvest/SKILL.md")"
-SOURCE="$(cat "$HERE/fixtures/v1-source.md")"
-REPO="$(cat "$HERE/fixtures/v1-repo.md")"
+SOURCE="$(cat "$HERE/fixtures/${FIXTURE}-source.md")"
+REPO="$(cat "$HERE/fixtures/${FIXTURE}-repo.md")"
 
 mkdir -p "$OUT/with" "$OUT/baseline"
 
@@ -64,7 +72,7 @@ run_arm() { # $1 = arm label  $2 = skill text
   done
 }
 
-echo "== source-harvest step-4 ablation ($MODEL, $RUNS runs/arm, baseline=$BASE_REF) =="
+echo "== source-harvest ablation (fixture=$FIXTURE, $MODEL, $RUNS runs/arm, baseline=$BASE_REF) =="
 run_arm with "$WITH_SKILL"
 run_arm baseline "$BASE_SKILL"
 echo "done -> $OUT"
