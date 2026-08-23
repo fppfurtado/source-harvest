@@ -1,7 +1,8 @@
 ---
 name: source-harvest
 description: >-
-  Harvest 1..N external sources (video / URL / PDF / pasted text) into structured extracts, synthesize
+  Harvest 1..N external sources (video / URL / PDF / pasted text / a codebase or tool read at code level)
+  into structured extracts, synthesize
   across them, confront the result against THIS repo's doctrine + tree + open issues, validate the
   leverageable points against current web/academic evidence, and emit a ranked, operator-gated
   adopt-proposal — filing nothing without approval. Use when you have outside signal (a talk,
@@ -34,13 +35,23 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
 - A knowledge vault / compounding wiki → that is the accumulation path (a source-digester / a PKM island).
   Harvest outputs are **proposals and tracked items, not pages filed back into this repo**.
 - A replacement for problem-framing → if a harvest surfaces a problem-shaped effort, **hand off to `frame`**;
-  do not absorb the framing here.
+  do not absorb the framing here. This includes the confrontation-as-MIRROR outcome — when the highest-value
+  yield is not an adopt/reject of the source but a re-illumination of THIS repo's OWN deferred / unbuilt debt
+  that the source does NOT fix (the source's own answer being doctrine-cut, or worse): that self-debt is a
+  `frame` candidate on our own thing, not a source-adopt disposition — route it to `frame`, don't force it
+  into an adopt bucket.
 
 ## Protocol
 
 1. **Ingest (per source → structured extract).** For each source, use the fitting existing capability and do
    NOT build a parallel one: a video link → a video→context adapter (e.g. the media-context MCP); a URL →
-   a web-fetch tool; a local PDF / text / markdown → read it; inline text → use it directly. Where a source
+   a web-fetch tool; a local PDF / text / markdown → read it; inline text → use it directly; **a software
+   tool / codebase in this repo's bounded context (a competing or adjacent system) → a structured
+   code-level read of the ACTUAL source (clone to scratch + parallel readers over the load-bearing
+   modules / crates / docs), NOT a web-fetch of its README.** For a software-tool source the README is a
+   SECONDARY anchor — a tool's self-description is its aspiration, its code is its actual commitment, so the
+   deciding evidence lives in the code (mirrors step 3's `CLAUDE.md may be a partial/secondary anchor`
+   caution, applied here to the SOURCE side of the ingest). Where a source
    type has no adapter, degrade to pasted text (the core is source-agnostic). Produce a structured extract
    per source: claims / techniques / stances / notable specifics — with a one-line provenance (what it is,
    where from).
@@ -62,11 +73,24 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
    - **gap** — a real thing the repo does not address and that its doctrine does not cut.
    This is judgment (there is no completeness oracle); be honest about uncertainty rather than forcing a bucket.
    **Evidence gate:** each bucket's justification must cite a *real* anchor — a file/section, a `guidelines/`
-   rule or Vision/Brief/Spec clause, an issue #, or a tree path — never a bare claim or invented rationale. A
+   rule or Vision/Brief/Spec clause, an issue #, a tree path, or a live-probe result — never a bare claim or
+   invented rationale. A
    classification whose evidence cites nothing concrete is not earned: re-read the actual surface for the real
    anchor; if none is found, don't force the bucket — the "be honest about uncertainty" rule above applies (an
    unanchored insight is not a confident classification). (Both live-observed misclassifications rode invented
    "evidence" that cited no anchor.)
+
+   **Confront against LIVE operational signal, not only static doctrine.** The surfaces above are all
+   DOCUMENTARY (doctrine / frozen contracts / tree / issues) — the repo as WRITTEN. Where the repo also
+   exposes a cheap, relevant, queryable LIVE signal — a CLI, an eval / metrics command, a data probe —
+   whose result would change an insight's bucket, confront against that RUNNING state too, VOI-gated exactly
+   like step-4 validation (probe only a signal that would move the classification; skip where none exists or
+   none is relevant). The doctrine may describe an aspiration, or a historical failure the running system
+   has already moved PAST: classify against the system as it RUNS, not only as it is documented. A
+   live-probe result is itself a real evidence anchor for the bucket it decides. (Live-observed: a frozen
+   Brief's failure mode confronted as an adopt-worthy `gap`; a one-line probe of the running instance showed
+   that failure is already INVERTED today → the verdict flipped adopt→reject. A doctrine-only confront would
+   have shipped the wrong proposal.)
 
 4. **Validate the leverageable points against current evidence (discharge the `unverified — confirm` loop).**
    Take the **gap** insights from step 3 — the only adopt-candidates — and, for each whose adopt-decision
@@ -137,7 +161,7 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
 ## Confrontation with THIS repo
 | Insight | Bucket | Evidence (repo cite) |
 |---------|--------|----------------------|
-| <insight> | already-maps / doctrine-cuts / gap | <AGENTS.md §, guideline, Vision/Brief/Spec §, issue #, tree path — a real anchor, never a bare claim> |
+| <insight> | already-maps / doctrine-cuts / gap | <AGENTS.md §, guideline, Vision/Brief/Spec §, issue #, tree path, live-probe result — a real anchor, never a bare claim> |
 
 ## Validation of the gap points (step 4 — confirm/refute vs current evidence)
 <!-- Gaps only (the adopt-candidates). A point that decays or is empirical is confirmed/refuted; a timeless

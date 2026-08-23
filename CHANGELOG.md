@@ -4,6 +4,31 @@ Keep-a-Changelog-inspired; newest first. This unit versions on its own line (`so
 
 ## [Unreleased]
 
+### Added
+- **Two confront/ingest depth gaps closed, surfaced by the skill's own reflexive loop** (agent-kit #989,
+  cross-repo-origin from working mneme#210 — the harvest improving via the issue it filed). Owed-at-release
+  eval: #989 (behavioral D1/D2; discharged at this release per the v0.2.0 pattern).
+  - **D1 — confront against the repo's LIVE operational signal, not only static doctrine (step 3).** Step 3
+    confronted only DOCUMENTARY surfaces (`AGENTS.md`/`CLAUDE.md`, `guidelines/`, frozen contracts, tree,
+    open issues) — the repo as WRITTEN. It now also confronts, VOI-gated like step-4 validation, against a
+    cheap queryable LIVE signal (a CLI, an eval/metrics command, a data probe) whose result would change an
+    insight's bucket — classifying against the system as it RUNS, not only as documented. Proof (#210): a
+    frozen Brief's failure mode read as an adopt-worthy `gap`; a one-line probe of the running instance
+    showed the failure was already inverted today → the verdict flipped adopt→reject. A live-probe result is
+    now a first-class evidence anchor (evidence gate + Report table).
+  - **D2 — recognize a codebase/tool SOURCE and ingest it at code level, not README/prose (step 1).** Added
+    a "software tool / codebase in this repo's bounded context" source type whose fitting ingest is a
+    structured code-level read of the actual source (clone to scratch + parallel readers over the
+    load-bearing modules/crates/docs), with the README as a SECONDARY anchor — a tool's self-description is
+    its aspiration, its code is its actual commitment (the doctrine-vs-code gap D1 names on the incumbent
+    side, here on the SOURCE side). Proof (#210): ai-memory's README said "capture is automatic"; the
+    code revealed a shipped-off `require_approval` switch + no trust field — the evidence the verdict
+    actually turned on.
+  - **D3 — name the confrontation-as-MIRROR outcome (route-to-frame).** When the highest-value yield is not
+    an adopt/reject of the source but a re-illumination of THIS repo's OWN deferred/unbuilt debt the source
+    does not fix, that self-debt is a `frame` candidate on our own thing — routed to `frame`, not forced
+    into an adopt bucket (a light naming of an outcome the existing frame hand-off already partly covered).
+
 ## [0.2.0] - 2026-08-09
 
 ### Added
