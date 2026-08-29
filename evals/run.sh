@@ -23,10 +23,12 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 # `claude -p` loads the operator's global ~/.claude/CLAUDE.md, whose doctrine would otherwise leak into
 # BOTH arms (agent-kit #414/#643). Source the SAME single-sourced helper the root evals/ runners use — it
 # builds a fresh auth-only temp HOME, unsets CLAUDE_CONFIG_DIR, and PRE-FLIGHT-asserts the isolation is in
-# effect (a bare `HOME=` redirect can't verify those, #647). This eval pack lives permanently in-repo
-# (the adapters symlink SKILL.md ONLY — the evals/ dir never ships, and standalone skills/ are never
-# subtree-extracted), so the ../../../evals/lib path is stable; sourcing it is valid, not fragile. The
-# helper leaves $ISO_HOME for the CALLER to clean.
+# effect (a bare `HOME=` redirect can't verify those, #647). This eval pack is MONOREPO-ONLY: the
+# adapters symlink SKILL.md ONLY, and the go-public extraction (ADR 0008 / #1079 — source-harvest became
+# the first public island) deliberately EXCLUDES this evals/ dir from the public repo, keeping it in the
+# monorepo dev home where the shared ../../../evals/lib helper resolves. So the path is stable HERE (it is
+# never carried into the standalone public repo); sourcing it is valid, not fragile. The helper leaves
+# $ISO_HOME for the CALLER to clean.
 source "$HERE/../../../evals/lib/isolate-home.sh"
 trap 'rm -rf "$ISO_HOME"' EXIT
 
