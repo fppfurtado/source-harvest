@@ -9,8 +9,8 @@ Keep-a-Changelog-inspired; newest first. This unit versions on its own line (`so
 ### Added
 - **Two confront/ingest depth gaps closed, surfaced by the skill's own reflexive loop** (agent-kit #989,
   cross-repo-origin from working mneme#210 — the harvest improving via the issue it filed). Owed-at-release
-  eval **EARNED** at weak tier (`reports/2026-08-23-v0.3.0-989-depth-gaps/`, 3/3 vs 0/3 on both
-  discriminating assertions) — but
+  eval **EARNED** at weak tier (3/3 vs 0/3 on both discriminating assertions; the eval pack + report live
+  in the agent-kit source monorepo) — but
   only once D1/D2 were given **structural Harvest-Report anchors** (a `Live-signal check:` line + a
   per-source `ingest level:` tag): the eval's load-bearing lesson was that the D1/D2 PROSE alone NULLED at
   weak tier (WITH == BASELINE), earning only when anchored to a report slot the weak model fills in — the
