@@ -138,10 +138,13 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
    file, open, amend, or edit any tracker item before the operator approves specific proposals. Approval is
    per-proposal (approve some, reject others, edit any).
 
-7. **File only what was approved.** For each approved proposal, hand off to the backlog `capture` skill
-   (open) or post the amend comment (amend); an approved **do-not-file** files nothing by design (it is a
-   decision, not an action). File nothing else. Never auto-implement a finding (that is a separate, later
-   decision).
+7. **File only what was approved.** For each approved proposal, file it durably: **hand off to the backlog
+   `capture` skill if that skill is available; otherwise present the approved items as a ready-to-file list**
+   (a proposed title + one-line body each) for the operator to file manually in whatever tracker they use —
+   the `capture` hand-off is a convenience, not a hard dependency (a standalone install may not ship the
+   backlog unit). For an **amend**, post the amend comment (or, absent `capture`, include it in the manual
+   list, naming the item to extend); an approved **do-not-file** files nothing by design (it is a decision,
+   not an action). File nothing else. Never auto-implement a finding (that is a separate, later decision).
 
 ## Harvest Report (the artifact of step 6)
 

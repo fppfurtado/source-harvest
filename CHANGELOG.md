@@ -4,6 +4,13 @@ Keep-a-Changelog-inspired; newest first. This unit versions on its own line (`so
 
 ## [Unreleased]
 
+### Changed
+- **Step 7's backlog `capture` hand-off is now gracefully optional** (agent-kit #1153, blind-critic J5 EXIT
+  residual of the #1079 go-public extraction). A standalone/public install may ship no backlog unit, so the
+  terminal file step no longer hard-depends on `capture`: it hands off when a backlog tool is available, else
+  presents the approved items as a ready-to-file list for manual filing. Honors "shipped surfaces reference
+  only what ships with them" for the extracted public consumer.
+
 ## [0.3.0] - 2026-08-23
 
 ### Added
