@@ -4,6 +4,8 @@ Keep-a-Changelog-inspired; newest first. This unit versions on its own line (`so
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-09-03
+
 ### Changed
 - **Step 7's backlog `capture` hand-off is now gracefully optional** (agent-kit #1153, blind-critic J5 EXIT
   residual of the #1079 go-public extraction). A standalone/public install may ship no backlog unit, so the
