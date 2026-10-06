@@ -1,0 +1,21 @@
+Run the source-harvest skill now. "This repo" is the current working directory — explore it with your
+file tools as the skill directs. The sources are given inline below (treat them as pasted text; you have no
+web access). Produce the Harvest Report and stop for approval, as the skill says.
+
+=== SOURCE S1 — "designer-kit", a public collection of design skills for coding agents (pasted) ===
+
+README: designer-kit packages three skills an agent can load while building web front ends. Each skill is a
+SKILL.md with YAML frontmatter (`name`, `description`) plus a `plugin.json` manifest; our CI lints the
+frontmatter so a malformed description never reaches a user.
+
+skills/responsive-tables/SKILL.md:
+  When a screen shows tabular data, design for the narrowest viewport first. Any table with more than four
+  columns must reflow into stacked cards on small screens, with the row's identifying column first; never
+  ship a table that needs sideways scrolling on a phone.
+
+skills/form-feedback/SKILL.md:
+  Validate each field inline when it loses focus, not only on submit. Put the error text directly under the
+  field and keep the submit button enabled so the user can retry.
+
+skills/empty-states/SKILL.md:
+  An empty list is a design surface: say why it is empty and offer the single next action.
