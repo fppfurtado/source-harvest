@@ -46,14 +46,14 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
 1. **Ingest (per source → structured extract).** For each source, use the fitting existing capability and do
    NOT build a parallel one: a video link → a video→context adapter (e.g. the media-context MCP); a URL →
    a web-fetch tool; a local PDF / text / markdown → read it; inline text → use it directly; **a software
-   tool / codebase in this repo's bounded context (a competing or adjacent system) → a structured
-   code-level read of the ACTUAL source (clone to scratch + parallel readers over the load-bearing
-   modules / crates / docs), NOT a web-fetch of its README.** For a software-tool source the README is a
-   SECONDARY anchor — a tool's self-description is its aspiration, its code is its actual commitment, so the
-   deciding evidence lives in the code (mirrors step 3's `CLAUDE.md may be a partial/secondary anchor`
-   caution, applied here to the SOURCE side of the ingest). **Record each source's ingest level in the
-   report's Per-source extracts — a tool read only at README level is flagged as partially ingested, not
-   treated as fully known.** Where a source
+   tool / codebase in this repo's bounded context (a competing or adjacent system), or a repo whose
+   substance is PROSE instruction files (skills, prompts, rubrics) — either one even when given as a URL →
+   a structured read of its ACTUAL load-bearing artifacts (clone to scratch + parallel readers), NOT a
+   web-fetch of its README.** The README is a SECONDARY anchor — a self-description is aspiration, the artifacts are the
+   commitment: code for a tool; the instruction files read in full for a prose-substance source (its code
+   is packaging). **Record each source's `ingest level:` in the report: `README-only` (partial) ·
+   `artifact-level` · `direct` (a document, inline text or adapter output read in full) · `summarized`
+   (partial — an adapter digest or a pasted summary).** Where a source
    type has no adapter, degrade to pasted text (the core is source-agnostic). Produce a structured extract
    per source: claims / techniques / stances / notable specifics — with a one-line provenance (what it is,
    where from).
@@ -68,7 +68,11 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
    insight touches (a repo's Vision / Brief / Spec — where the load-bearing doctrine may live rather than in
    `CLAUDE.md`, so confronting only the `CLAUDE.md` surface reads a partial/secondary anchor and misclassifies)
    — plus the tree and open issues the insight touches (bounded to what each insight is about; do not sweep
-   the whole repo). Classify every synthesized insight into exactly one bucket, with a one-line justification
+   the whole repo). **Then read this repo's own CAPABILITY in each subject the sources cover** — a separate
+   lookup scoped to the subject, not per insight, over the repo's shipped skill / agent / rubric surfaces:
+   the artifact already doing the sources' job (design sources → its design/UX review). Record it in
+   `Capability check:`; an `already-maps` insight in that subject cites it. Doctrine surfaces alone are the
+   wrong set for a domain-content source. Classify every synthesized insight into exactly one bucket, with a one-line justification
    citing the repo evidence:
    - **already-maps** — the repo already does this (name where);
    - **doctrine-cuts** — the repo's doctrine deliberately rejects or supersedes this (name the tenet / rule);
@@ -79,8 +83,7 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
    invented rationale. A
    classification whose evidence cites nothing concrete is not earned: re-read the actual surface for the real
    anchor; if none is found, don't force the bucket — the "be honest about uncertainty" rule above applies (an
-   unanchored insight is not a confident classification). (Both live-observed misclassifications rode invented
-   "evidence" that cited no anchor.)
+   unanchored insight is not a confident classification).
 
    **Confront against LIVE operational signal, not only static doctrine.** The surfaces above are all
    DOCUMENTARY (doctrine / frozen contracts / tree / issues) — the repo as WRITTEN. Where the repo also
@@ -91,10 +94,7 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
    has already moved PAST: classify against the system as it RUNS, not only as it is documented. A
    live-probe result is itself a real evidence anchor for the bucket it decides. **Record the outcome in the
    report's `Live-signal check` line — including the `signal named but no tool to run it` state, which keeps
-   the classification provisional rather than silently doctrine-only.** (Live-observed: a frozen Brief's
-   failure mode confronted as an adopt-worthy `gap`; a one-line probe of the running instance showed that
-   failure is already INVERTED today → the verdict flipped adopt→reject. A doctrine-only confront would have
-   shipped the wrong proposal.)
+   the classification provisional rather than silently doctrine-only.**
 
 4. **Validate the leverageable points against current evidence (discharge the `unverified — confirm` loop).**
    Take the **gap** insights from step 3 — the only adopt-candidates — and, for each whose adopt-decision
@@ -156,9 +156,8 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
 - S2: …
 
 ## Per-source extracts
-- S1: <claims / techniques / stances / specifics> — **ingest level:** <prose | code-level; flag a
-  README-only read of a software-tool / codebase source as partial — README secondary, code un-ingested
-  (see step 1)>
+- S1: <claims / techniques / stances / specifics> — **ingest level:** <README-only | artifact-level |
+  direct | summarized — values defined in step 1>
 - …
 
 ## Synthesis
@@ -168,6 +167,10 @@ One or many, mixed — passed when the skill is invoked. If no source is given, 
   (load-bearing decaying claims tagged `unverified — confirm`)
 
 ## Confrontation with THIS repo
+**Capability check:** one line per subject the sources cover — <subject> → <this repo's capability in it,
+read (path) — or `none in this repo` + the skill / agent / rubric surfaces searched>. Filled BEFORE the
+table (step 3).
+
 | Insight | Bucket | Evidence (repo cite) |
 |---------|--------|----------------------|
 | <insight> | already-maps / doctrine-cuts / gap | <AGENTS.md §, guideline, Vision/Brief/Spec §, issue #, tree path, live-probe result — a real anchor, never a bare claim> |
