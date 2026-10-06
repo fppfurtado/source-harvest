@@ -1,0 +1,4 @@
+.
+AGENTS.md
+ISSUES.md
+guidelines/engineering.md

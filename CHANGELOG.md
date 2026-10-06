@@ -4,30 +4,40 @@ Keep-a-Changelog-inspired; newest first. This unit versions on its own line (`so
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-10-06
+
+The Harvest Report changes shape for consumers: a new required `Capability check:` line, and new
+`ingest level:` values. That is why this is a MINOR bump.
+
 ### Fixed
 - **The confrontation now reads THIS repo's own capability in the sources' subject (step 3 + a report
-  slot)** (agent-kit #2356). Step 3 named only doctrine and contract surfaces, so a harvest of design/UX
+  slot)** (agent-kit #2356). Step 3 named only doctrine and contract surfaces. So a harvest of design/UX
   skill collections was confronted against the repo's build floor and never opened the repo's own UX
-  review rubric — the whole domain yield was missed. Step 3 now requires a separate lookup, scoped per
-  subject the sources cover (not per insight), over the repo's shipped skill / agent / rubric surfaces; and
-  the Confrontation section carries a required **`Capability check:`** line per subject (the capability
-  read, or `none in this repo` + the surfaces searched), filled before the table. Report-slot form because this unit's own #989 eval measured that
-  step-3 prose alone nulls at weak tier. The surface-enumeration generator of agent-kit #2409 does not
-  reach this unit (it ships no sub-tool), so this slot is its cure here.
-- **Step 1's ingest rationale no longer inverts for a prose-substance source.** "The deciding evidence
-  lives in the code" sent a skill / prompt collection (code = packaging only) to a code read that found
+  review rubric, and the whole domain yield was missed. Step 3 now runs a separate lookup for each subject
+  the sources cover (not per insight), over the repo's shipped skill / agent / rubric surfaces. The
+  Confrontation section carries a required **`Capability check:`** line per subject, filled before the
+  table: the capability read, or `none in this repo` plus the surfaces searched. It is a report slot rather
+  than prose because this unit's agent-kit #989 eval measured that step-3 prose alone nulls at weak tier.
+  The surface-enumeration generator of agent-kit #2409 is not carried into this unit, so the slot is the
+  cure here.
+- **Step 1's ingest rationale no longer inverts for a prose-substance source.** "The deciding evidence lives
+  in the code" sent a skill / prompt collection, whose code is only packaging, to a code read that found
   nothing. A repo whose substance is prose instruction files now takes the artifact-read branch even when
   given as a URL, and its deciding evidence is the instruction files read in full. The `ingest level:`
-  values are defined in step 1 and cover every source type — `README-only` · `artifact-level` · `direct` ·
-  `summarized` — replacing the ambiguous `prose | code-level`, which had no slot for a video digest or a
+  values are defined in step 1 and cover every source type: `README-only` · `artifact-level` · `direct` ·
+  `summarized`. They replace the ambiguous `prose | code-level`, which had no value for a video digest or a
   pasted summary.
-- Two live-observed provenance parentheticals dropped from steps 3 and the evidence gate (their history
-  stays in the 0.2.0 / 0.3.0 entries below), paying for the added text under the size bar.
+- Two live-observed provenance parentheticals were dropped from step 3 and the evidence gate, to pay for the
+  added text under the size bar. Their history stays in the 0.2.0 / 0.3.0 entries below.
 
-Eval: **owed-at-release #2356** — fixture: a source whose subject is a domain the target repo has a
-shipped capability for; grade whether the run READS that capability surface (the `Capability check:`
-names it and `already-maps` cites it), not report well-formedness. Reuse the #989 pack's structure, not its
-fixtures.
+**Eval (owed-at-release agent-kit #2356): run, result REDUNDANT on its fixture, no harm, no regression.** It
+was a blind weak-tier ablation in which each cell explored a real fixture repo with its own tools. The
+fixture was a source whose subject the repo already has a shipped capability for. Pre-registered A, the run
+reads that capability: 5/5 with this change, 4/5 without it. The baseline's 4/5 meets the pre-registered
+`Redundant` bar. That holds on a 12-file fixture, where reading everything is cheaper than choosing, so the
+result cannot be told apart from a fixture without scale pressure. It is not evidence that the slot is
+useless. The slot appeared in 10/10 treatment cells and invented no capability on the control (0/5). The
+eval pack and its report live in the agent-kit source monorepo.
 
 ## [0.4.0] - 2026-09-03
 

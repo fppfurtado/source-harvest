@@ -1,0 +1,7 @@
+[
+  {"cell": "cell-16", "signal": "H", "value": "no", "evidence": "*Database migration patterns* → **none in this repo**"},
+  {"cell": "cell-17", "signal": "H", "value": "no", "evidence": "No persistent schema found; no migration code in tree; no database-related skills shipped."},
+  {"cell": "cell-18", "signal": "A*", "value": "yes", "evidence": "| Empty states (explain why empty, offer next action) | already-maps | ux-check/rubric.md:H6 — \"An empty list explains why it is empty and offers the next action.\""},
+  {"cell": "cell-19", "signal": "A*", "value": "yes", "evidence": "| responsive-tables: tables > 4 columns reflow to stacked cards on small screens | already-maps | `skills/ux-check/rubric.md` H5 codifies this exactly"},
+  {"cell": "cell-20", "signal": "A*", "value": "yes", "evidence": "| empty-states: explain why empty + offer next action | already-maps | skills/ux-check/rubric.md H6: \"An empty list explains why it is empty and offers the next action\" |"}
+]

@@ -1,0 +1,7 @@
+.
+AGENTS.md
+guidelines/engineering.md
+ISSUES.md
+src/components/RouteTable.tsx
+src/pages/SignUp.tsx
+skills/ux-check/rubric.md

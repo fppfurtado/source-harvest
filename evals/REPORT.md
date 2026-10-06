@@ -1,8 +1,63 @@
 # source-harvest eval — outcome record
 
-Two runs, one per behavioural release. Newest first.
-- **v0.3.0 (2026-08-23)** — #989 D1/D2 (below): confront-vs-live-signal + code-level tool-ingest.
+Three runs, one per behavioural release. Newest first.
+- **v0.5.0 (2026-10-06)** — #2356 capability read (below): does the run READ the repo's own capability in the sources' subject?
+- **v0.3.0 (2026-08-23)** — #989 D1/D2: confront-vs-live-signal + code-level tool-ingest.
 - **v0.2.0 (2026-08-09)** — #696 step-4 claim-validation (further down).
+
+---
+
+# v0.5.0 — #2356 capability read
+
+**Run: 2026-10-06.** Design, bars and rubric pre-registered in `DESIGN-v3.md` / `RUBRIC-v3.md`, committed before
+any cell ran (`12b3faf8`). One amendment to A's instrument, made after a smoke read of one control cell's tool
+trace and before any report was read (`87cf7749`, DESIGN-v3 § Amendment 1). Archive:
+`reports/2026-10-06-v0.5.0-2356-capability-read/` (raw cells, `.reads.txt` sidecars, anonymous cells,
+`mapping.json`, `grading/`, including `a-scores.txt` with both readings of A). The 2 MB of stream captures
+are not archived, following the #2477 pack's precedent, so A-content cannot be re-scored from the archive.
+Its per-cell result is recorded in `a-scores.txt`.
+
+20 cells (2 fixtures × 2 arms × 5 runs), **20 valid**, weak tier (haiku 4.5), **tree mode**: each cell explored a
+real fixture repo (`fixtures/v3-repo/`, `trailmap`) with its own tools. BASELINE = SKILL.md at `804821df`
+(before PR #2484); TREATMENT = as merged.
+
+## Result
+
+| signal | TREATMENT | BASELINE |
+|---|---|---|
+| **A**: read `skills/ux-check/` (`f-cap`), A-read · A-content | **5/5 · 5/5** | **4/5 · 4/5** |
+| **A\***: the read reached the verdict (`already-maps` citing `ux-check`) | 4/5 | 3/5 |
+| **H**: invented a capability on the control (`c-null`) | 0/5 | 0/5 |
+| `Capability check:` line present | 10/10 | 0/10 |
+
+## Verdict: REDUNDANT on this fixture, no harm, no regression
+
+- BASELINE A = 4/5 meets the pre-registered `Redundant` bar (≥ 4/5). Both readings of A give the same numbers,
+  so the amendment did not decide anything.
+- No regression: A +1, A\* +1. No-harm holds: H 0/5 in both arms.
+- **Redundant here does not mean the edit is useless, and it does not license a claim about WHY the baseline
+  passed.** The fixture repo has 12 files. Reading all of it is cheaper than deciding what to read, so a
+  competent baseline reaches `ux-check` without being told to. That is the same scale defect #2483 recorded for
+  its `f-trk` fixture. The #2356 miss happened on an Opus run in a repo with hundreds of surfaces, under a
+  doctrine-first enumeration. This fixture has no such pressure, so the null cannot be told apart from
+  redundancy (`guidelines/testing.md`, the NULL rung). Recorded as the bound of this run, not explained away.
+- What the run does show: the slot binds at the weak tier. Every TREATMENT cell emitted it, on both fixtures,
+  and none invented a capability on the control.
+
+## Spot read (author, 3 cells) and one observation
+
+I read cells 13, 15 and 07 in full and agree with the grader on all three. **Cell 13 (TREATMENT) is the
+pre-settled near case:** it read and cited rubric H5/H6, then bucketed both insights `gap` because the code does
+not implement them. That scores `no` by the rubric's letter. It also shows a real ambiguity in the skill's
+`already-maps` bucket, which can mean either *the repo has the norm* or *the repo's code does it*. Recorded here
+as an observation, not acted on in this release.
+
+## Instrument notes
+
+- **The driver's `.reads.txt` records `Read` calls only.** Cells also read through `Bash`. Fixed locally by the
+  content-sentinel reading (`score-a-v3.py`). The shared-driver defect is filed separately.
+- **Parallel driver instances report false ABANDONED cells** while a sibling is still running them. Re-validation
+  read 20/20 valid.
 
 ---
 

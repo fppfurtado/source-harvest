@@ -1,0 +1,4 @@
+.
+CLAUDE.md
+ISSUES.md
+guidelines/engineering.md
