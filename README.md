@@ -20,11 +20,8 @@ stops.
 
 The skill body is `SKILL.md`; the harness adapters live under `adapters/claude-code/` and
 `adapters/cursor/` (each carries its plugin manifest). To try it now, clone this repo and load the
-adapter for your harness directly (Claude Code: `/plugin marketplace add <path-to-clone>`; Cursor: point
-your plugin config at `adapters/cursor/`).
-
-A dedicated public marketplace/index install surface is planned (agent-kit ADR 0008, the M3 gate) and not
-wired yet — until then, the direct-clone path above is the standalone route.
+adapter for your harness directly (Claude Code: `claude --plugin-dir <path-to-clone>/adapters/claude-code`;
+Cursor: point your plugin config at `adapters/cursor/`).
 
 ## Source & development
 

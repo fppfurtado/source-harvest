@@ -52,12 +52,24 @@ not implement them. That scores `no` by the rubric's letter. It also shows a rea
 `already-maps` bucket, which can mean either *the repo has the norm* or *the repo's code does it*. Recorded here
 as an observation, not acted on in this release.
 
+## Two precedence gaps in my own pre-registration (found by the release `/audit`, after grading)
+
+Both are left as written, because editing a pre-registered file after the run would be the post-hoc call it
+exists to prevent. Instead, I checked that neither could have decided the verdict.
+
+- **RUBRIC-v3 H:** the `yes` clause and the first `no` clause can both hold at once (a `none in this repo`
+  line plus an `already-maps` citing a skill), and nothing says which wins. No control cell has an
+  `already-maps` row citing any repo skill (grep over all 10), so H = 0/10 under either precedence.
+- **DESIGN-v3 bars:** Regression and Redundant are not declared exclusive, so both could fire. Regression did
+  not fire under either A reading (A +1, A\* +1), so the verdict is the same either way.
+
 ## Instrument notes
 
 - **The driver's `.reads.txt` records `Read` calls only.** Cells also read through `Bash`. Fixed locally by the
-  content-sentinel reading (`score-a-v3.py`). The shared-driver defect is filed separately.
+  content-sentinel reading (`score-a-v3.py`). The shared-driver defect is recorded on agent-kit #1818, as a
+  second cause of that channel's mismatch.
 - **Parallel driver instances report false ABANDONED cells** while a sibling is still running them. Re-validation
-  read 20/20 valid.
+  read 20/20 valid. This is the third instance of agent-kit #2123.
 
 ---
 
