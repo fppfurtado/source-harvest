@@ -77,6 +77,19 @@ Each arm's tree = `fixtures/v3-repo/` + that arm's `skills/source-harvest/SKILL.
   check:` line but buckets both rubric-covered insights as `gap`. Scores **`no`**: the read did not reach
   the verdict, and that is the #2356 failure the slot exists to prevent.
 
+## Amendment 1 — A's instrument (2026-10-06, after a smoke read of ONE cell's tool trace, before any report was read or graded)
+
+The first published cell (`c-null`, a control) fetched files with `Bash` (`find`, `ls`) as well as `Read`.
+The driver's `.reads.txt` records `Read` calls only. So a cell that runs `cat skills/ux-check/rubric.md`
+scores `no` on A as written while the rubric is in its context. That is a defect in my instrument: it would
+undercount A in both arms, by an unknown and possibly unequal amount.
+
+- **A-content** is added: `yes` when some tool RESULT in the cell's stream carries text that only
+  `skills/ux-check/` holds (sentinels listed in `score-a-v3.py`), whatever tool fetched it.
+- **A-read** (as pre-registered) is kept and published beside it.
+- The bars apply to **both**. If they fall under different bars, the REPORT says so and the verdict rests
+  on that difference. A-content is not picked because it reads better.
+
 ## Validity
 
 The harness half is the driver's (`cell_validity.py`). Pack half: a cell counts if it produced a report with
