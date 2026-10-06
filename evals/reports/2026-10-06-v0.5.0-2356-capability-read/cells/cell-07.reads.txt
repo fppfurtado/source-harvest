@@ -1,6 +1,0 @@
-.
-ISSUES.md
-guidelines
-src/components/RouteTable.tsx
-src/pages/SignUp.tsx
-guidelines/engineering.md

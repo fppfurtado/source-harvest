@@ -1,4 +1,0 @@
-.
-ISSUES.md
-guidelines/engineering.md
-skills/release-notes

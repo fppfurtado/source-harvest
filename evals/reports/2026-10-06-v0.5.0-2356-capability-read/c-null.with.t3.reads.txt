@@ -1,4 +1,0 @@
-.
-guidelines/engineering.md
-ISSUES.md
-src/pages/SignUp.tsx
