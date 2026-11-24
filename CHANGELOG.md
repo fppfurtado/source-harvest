@@ -4,6 +4,13 @@ Keep-a-Changelog-inspired; newest first. This unit versions on its own line (`so
 
 ## [Unreleased]
 
+### Fixed
+- **The Claude Code install no longer comes out empty** (agent-kit #3113). The adapter's `SKILL.md` was a
+  link to the unit's root `SKILL.md`, and the catalog installs only the `adapters/claude-code` subdir, which
+  drops a link that leaves it. So 0.5.0 installed with an empty skill directory and the skill never
+  loaded. The public repo now carries the adapters' `SKILL.md` as a regular file; the skill text itself is
+  unchanged.
+
 ## [0.5.0] - 2026-10-06
 
 The Harvest Report changes shape for consumers: a new required `Capability check:` line, and new
