@@ -1,7 +1,0 @@
-[
-  {"cell": "cell-11", "signal": "H", "value": "no", "evidence": "Skills shipped (release-notes, ux-check, source-harvest) do not address database operations."},
-  {"cell": "cell-12", "signal": "H", "value": "no", "evidence": "| Reversible migrations (up/down/up CI cycle) | doctrine-cuts | guidelines/engineering.md:6 \"Keep the API stateless; session state lives in the client\""},
-  {"cell": "cell-13", "signal": "A*", "value": "no", "evidence": "| responsive-tables: >4-column tables reflow into stacked cards on narrow viewports | gap | ux-check H5 states the requirement"},
-  {"cell": "cell-14", "signal": "A*", "value": "yes", "evidence": "| already-maps | skills/ux-check/rubric.md H5 — \"table wider than four columns collapses into stacked cards below 640 px"},
-  {"cell": "cell-15", "signal": "A*", "value": "no", "evidence": "| Empty-states design: articulate why a list is empty; offer the single next action | **gap** | Not addressed in AGENTS.md, guidelines, or ISSUES.md"}
-]

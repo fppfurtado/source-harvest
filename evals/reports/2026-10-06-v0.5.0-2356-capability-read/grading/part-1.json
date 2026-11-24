@@ -1,7 +1,0 @@
-[
-  {"cell": "cell-01", "signal": "A*", "value": "yes", "evidence": "| responsive-tables (table reflow on narrow viewport) | already-maps | ux-check/rubric.md H5: \"A table wider than four columns collapses into stacked cards below 640 px"},
-  {"cell": "cell-02", "signal": "H", "value": "no", "evidence": "**Capability check:** Database/schema management → **none in this repo**"},
-  {"cell": "cell-03", "signal": "A*", "value": "yes", "evidence": "| Responsive tables (narrow-first reflow) | already-maps | H5 in skills/ux-check/rubric.md; issue #15 confirms implementation gap |"},
-  {"cell": "cell-04", "signal": "H", "value": "no", "evidence": "| Reversible migrations (down steps + CI validation cycle) | doctrine-cuts | guidelines/engineering.md: \"Keep the API stateless; session state lives in the client\" — the repo has no database"},
-  {"cell": "cell-05", "signal": "H", "value": "no", "evidence": "| reversible-migrations (up↔down CI validation) | **gap** | No migration infrastructure in tree"}
-]

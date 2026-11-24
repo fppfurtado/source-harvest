@@ -1,7 +1,0 @@
-[
-  {"cell": "cell-06", "signal": "A*", "value": "yes", "evidence": "| Responsive tables (narrow-first reflow, stacked cards, no scroll, identifying column first) | **already-maps** | skills/ux-check/rubric.md:5-8 (H5: \"Data-dense tables at narrow width\") |"},
-  {"cell": "cell-07", "signal": "A*", "value": "no", "evidence": "| Empty states: explain why empty, offer next action | **gap** | src/components/RouteTable.tsx has no conditional render for empty routes array"},
-  {"cell": "cell-08", "signal": "H", "value": "no", "evidence": "Database migrations / schema versioning → no infrastructure in this repo (src/api does not exist; no `migrations/` or `db/` directory); no skills shipped for migration work."},
-  {"cell": "cell-09", "signal": "H", "value": "no", "evidence": "**Database/schema management** → none in this repo."},
-  {"cell": "cell-10", "signal": "H", "value": "no", "evidence": "**No SQL/migration/schema files exist in the repo tree**"}
-]

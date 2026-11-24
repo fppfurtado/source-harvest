@@ -1,8 +1,0 @@
-.
-AGENTS.md
-ISSUES.md
-guidelines/engineering.md
-src/components/RouteTable.tsx
-src/pages/SignUp.tsx
-skills/ux-check/SKILL.md
-skills/ux-check/rubric.md
