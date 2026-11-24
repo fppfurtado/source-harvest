@@ -13,9 +13,9 @@
 #   v1  — step-4 claim-validation (agent-kit #696);           baseline BASE_REF=6b86e74 (pre-#696)
 #   v2  — D1 confront-vs-live-signal + D2 code-level ingest (#989); baseline BASE_REF=8da29c2 (pre-#989)
 #
-# Usage:  ./run.sh <out-dir>            (defaults: MODEL=claude-haiku-4-5-20251001, RUNS=3, FIXTURE=v1,
-#                                        BASE_REF=6b86e74)
-#   e.g.  FIXTURE=v2 BASE_REF=8da29c2 ./run.sh reports/2026-08-23-v0.3.0-989-depth-gaps
+# Usage:  ./run.sh <out-dir>            (defaults: MODEL=claude-haiku-4-5-20251001, RUNS=3, FIXTURE=v1)
+#                                        BASE_REF defaults per FIXTURE: v1 6b86e74, v2 8da29c2
+#   e.g.  FIXTURE=v2 ./run.sh reports/2026-08-23-v0.3.0-989-depth-gaps
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 
@@ -23,8 +23,8 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 # `claude -p` loads the operator's global ~/.claude/CLAUDE.md, whose doctrine would otherwise leak into
 # BOTH arms (agent-kit #414/#643). Source the SAME single-sourced helper the root evals/ runners use — it
 # builds a fresh auth-only temp HOME, unsets CLAUDE_CONFIG_DIR, and PRE-FLIGHT-asserts the isolation is in
-# effect (a bare `HOME=` redirect can't verify those, #647). This eval pack is MONOREPO-ONLY: the
-# adapters symlink SKILL.md ONLY, and the go-public extraction (ADR 0008 / #1079 — source-harvest became
+# effect (a bare `HOME=` redirect can't verify those, #647). This eval pack is MONOREPO-ONLY: in this
+# monorepo the adapters symlink SKILL.md (the public island carries them dereferenced, #3113), and the go-public extraction (ADR 0008 / #1079 — source-harvest became
 # the first public island) deliberately EXCLUDES this evals/ dir from the public repo, keeping it in the
 # monorepo dev home where the shared ../../../evals/lib helper resolves. So the path is stable HERE (it is
 # never carried into the standalone public repo); sourcing it is valid, not fragile. The helper leaves
@@ -35,9 +35,14 @@ trap 'rm -rf "$ISO_HOME"' EXIT
 OUT="${1:?usage: run.sh <out-dir>}"
 MODEL="${MODEL:-claude-haiku-4-5-20251001}"
 RUNS="${RUNS:-3}"
-BASE_REF="${BASE_REF:-6b86e74}"
-
 FIXTURE="${FIXTURE:-v1}"
+# The baseline follows the fixture: a v2 run against v1's baseline would compare the wrong texts and look valid.
+case "$FIXTURE" in
+  v1) default_base=6b86e74 ;;
+  v2) default_base=8da29c2 ;;
+  *) echo "run.sh: unknown FIXTURE '$FIXTURE' (v1|v2)" >&2; exit 1 ;;
+esac
+BASE_REF="${BASE_REF:-$default_base}"
 WITH_SKILL="$(cat "$HERE/../SKILL.md")"
 BASE_SKILL="$(git -C "$HERE" show "$BASE_REF:skills/source-harvest/SKILL.md")"
 SOURCE="$(cat "$HERE/fixtures/${FIXTURE}-source.md")"

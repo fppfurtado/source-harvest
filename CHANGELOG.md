@@ -14,6 +14,8 @@ PATCH: packaging only, the skill text is unchanged.
   drops a link that leaves it. So 0.5.0 installed with an empty skill directory and the skill never
   loaded. The public repo now carries the adapters' `SKILL.md` as a regular file; the skill text itself is
   unchanged.
+- **README's protocol summary names the capability read** that 0.5.0 added to the confrontation (found by
+  the 0.5.1 release audit).
 
 ## [0.5.0] - 2026-10-06
 

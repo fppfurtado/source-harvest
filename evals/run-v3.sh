@@ -11,10 +11,14 @@ FX="$HERE/fixtures/v3-repo"
 
 # Fixture gate: the doctrine surfaces must not leak the capability's content. If they named ux-check or
 # its rubric, a run would reach the capability without opening it, and A would measure nothing.
-if grep -rilE 'ux-check|rubric|stacked cards|empty state' \
-     "$FX/AGENTS.md" "$FX/guidelines" "$FX/build" "$FX/ISSUES.md"; then
-  echo "FATAL: a doctrine surface leaks the capability (files above)" >&2; exit 1
-fi
+# The scorer's SENTINELS (score-a-v3.py) are checked too: a leaked sentinel would inflate A-content.
+# grep exits 2 when a path is missing; that must fail the gate, not read as "no leak".
+for pat in 'ux-check|rubric|stacked cards|empty state' \
+           'Data-dense tables at narrow width|Recognition over recall|Review a built trailmap screen|judge it against every'; do
+  rc=0; grep -rilE "$pat" "$FX/AGENTS.md" "$FX/guidelines" "$FX/build" "$FX/ISSUES.md" || rc=$?
+  if [ "$rc" -eq 0 ]; then echo "FATAL: a doctrine surface leaks the capability (files above)" >&2; exit 1; fi
+  if [ "$rc" -ne 1 ]; then echo "FATAL: the fixture gate could not read a doctrine surface (grep exit $rc)" >&2; exit 1; fi
+done
 
 source "$REPO_ROOT/evals/lib/skill-ablation.sh"
 trap 'rm -rf "$ISO_HOME"' EXIT

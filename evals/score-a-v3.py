@@ -15,6 +15,7 @@ import pathlib
 import sys
 
 # Strings that exist only in skills/ux-check/ (rubric.md and SKILL.md), never in the doctrine surfaces.
+# run-v3.sh's fixture gate greps the doctrine surfaces for these same strings; change both together.
 SENTINELS = (
     "Data-dense tables at narrow width",
     "Recognition over recall",
@@ -40,12 +41,23 @@ def result_texts(stream):
 
 
 def main():
+    if len(sys.argv) != 2:
+        sys.exit("usage: score-a-v3.py <run-out-dir>")
     out = pathlib.Path(sys.argv[1])
     rows = {}
-    for stream in sorted(out.glob("f-cap.*.t*.stream.jsonl")):
+    streams = sorted(out.glob("f-cap.*.t*.stream.jsonl"))
+    if not streams:  # a wrong path must not read as a real result of zero
+        sys.exit(f"score-a-v3.py: no f-cap.*.t*.stream.jsonl under {out}")
+    for stream in streams:
         stem = stream.name[: -len(".stream.jsonl")]
-        _, arm, run = stem.split(".")
-        reads = (out / f"{stem}.reads.txt").read_text().splitlines()
+        parts = stem.split(".")
+        if len(parts) != 3:
+            sys.exit(f"score-a-v3.py: unexpected stream name {stream.name} (want f-cap.<arm>.<run>)")
+        _, arm, run = parts
+        reads_path = out / f"{stem}.reads.txt"
+        if not reads_path.is_file():
+            sys.exit(f"score-a-v3.py: {reads_path} is missing (each stream needs its .reads.txt)")
+        reads = reads_path.read_text().splitlines()
         a_read = any(r.startswith("skills/ux-check/") for r in reads)
         a_content = any(any(s in t for s in SENTINELS) for t in result_texts(stream))
         rows.setdefault(arm, []).append((run, a_read, a_content))

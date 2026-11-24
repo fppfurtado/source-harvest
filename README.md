@@ -7,8 +7,8 @@ Given 1..N external sources — a video, URL, PDF, pasted text, or a codebase/to
 `source-harvest`:
 
 1. **Harvests** each into a structured extract, then **synthesizes** across them.
-2. **Confronts** the result against THIS repo's own doctrine + tree + open issues (not the abstract "best
-   practice" — what actually holds here).
+2. **Confronts** the result against THIS repo's own doctrine, tree, open issues and its own capability in the
+   sources' subject (not the abstract "best practice" — what actually holds here).
 3. **Validates** the leverageable points against current web / academic evidence.
 4. Emits a **ranked, operator-gated adopt-proposal** — and files nothing without approval.
 
