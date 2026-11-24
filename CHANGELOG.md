@@ -4,6 +4,10 @@ Keep-a-Changelog-inspired; newest first. This unit versions on its own line (`so
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-11-24
+
+PATCH: packaging only, the skill text is unchanged.
+
 ### Fixed
 - **The Claude Code install no longer comes out empty** (agent-kit #3113). The adapter's `SKILL.md` was a
   link to the unit's root `SKILL.md`, and the catalog installs only the `adapters/claude-code` subdir, which
